@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (min-width: 995px) {
+        #add_border {
+          border-right: 1px solid black;
+        }
+      }
+
+      .jumbotron {
+        margin-bottom: 70px;
+        padding: 15px;
+      }
+      article{
+        padding-top: 77px;
+      }
+
+    </style>
+    <script src="https://kit.fontawesome.com/33b3cdea20.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Exam Paper Evaluation</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class=" text-center">
+        <h3>Questions</h3>
+      </div>
+      <div class="center">
+        <div class=" text-center">
+          <article>
+          <form class="form-signin" method=post action="/addquest">
+            <p class="h4 mb-2 font-weight-normal">Add Question And Answers </p>
+            <input type="number" name="qid" class="form-control-file mb-2" id="qid" placeholder="Question id" required="required"><br>
+            <input type="text" name="quest" class="form-control-file mb-2" id="quest" placeholder="Enter  Question" required="required"><br>
+              <textarea class="form-control-file mb-2" name="ans"></textarea>
+              <input type="number" name="qm" class="form-control-file mb-2" id="qid" placeholder="Marks of this question" required="required"><br>
+              <button class="btn btn-lg btn-success btn-block" type="submit">Add</button>
+              <button class="btn btn-lg btn-success btn-block" type="reset">Clear</button>
+
+          </form>
+        </article>
+          <form action="/logout" method="POST">
+            <table width="20%"  align="center">
+            <tr>
+            <td><input  class="btn btn-danger" type="submit" value="logout"></td>
+            
+            </tr>
+            
+            </table>
+            </form>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('#inputfile').bind('change', function() {
+          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['jpg','jpeg', 'png']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg/png files are allowed!');
+          }
+      });
+    </script>
+  </body>
+</html>

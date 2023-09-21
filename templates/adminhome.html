@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (min-width: 995px) {
+        #add_border {
+          border-right: 1px solid black;
+        }
+      }
+
+      .jumbotron {
+        margin-bottom: 70px;
+        padding: 15px;
+      }
+      article{
+        padding-top: 120px;
+      }
+
+    </style>
+    <script src="https://kit.fontawesome.com/33b3cdea20.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Exam Paper Evaluation</title>
+  </head>
+  <body>
+    <div class="container">
+      <div  class="text-center">
+        <h3>Automatic Exam Paper Evaluation</h3>
+      </div>
+      <article>
+      <div style="background-color: sandybrown; border: 1px solid black; padding: 10px;"class="row">
+        <div class="col-lg-6 col-xs-12 text-center pt-3" id = "add_border">
+          <i class="fa fa-university fa-8x mb-1"></i>
+          <table>
+            <tr>
+              <th>Studentname</th>
+              <th>Rollnumber</th>
+              <th>Evaluate</th>
+            </tr>
+            {% for item in data %}
+      </article>
+<tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+    <td><a href={{ url_for('evaluvate', rollno=item[1]) }}>Click</a></td>
+    
+</tr>
+{% endfor %}
+          </table>
+        </div>
+
+        <div class="col-lg-6 col-xs-12 text-center pt-3 pb-3">
+          <i class="fas fa-laptop-code fa-8x mb-4 "></i>
+          <div class="description">
+           <form name="home" method="POST">
+            <input type="submit" class="btn  btn-primary" nonclick="return check(this.form)" value="Add Question and answers" formaction="/questionpage" >
+            <input type="submit" class="btn  btn-danger" onclick="return check(this.form)" value="Logout" formaction="/logout" >
+           </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('#inputfile').bind('change', function() {
+          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['jpg','jpeg', 'png']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg/png files are allowed!');
+          }
+      });
+    </script>
+  </body>
+</html>

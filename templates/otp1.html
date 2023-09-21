@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (min-width: 995px) {
+        #add_border {
+          border-right: 1px solid black;
+        }
+      }
+
+      .jumbotron {
+        margin-bottom: 70px;
+        padding: 15px;
+      }
+      article{
+        padding-top:50px;
+      }
+
+    </style>
+    <script src="https://kit.fontawesome.com/33b3cdea20.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Exam Paper Evaluation</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-center">
+        <h2 style="font-size:50px;">Online Exam paper Evaluation System</h2>
+      </div>
+      <article>
+      <div class="center">
+        <div class="text-center">
+          <i class="fas fa-user fa-8x mb-1"></i>
+          <form class="form-signin" method=post action="/fpass1">
+            <p class="h4 mb-2 font-weight-normal">Enter Your OTP </p>
+            {%if results%}
+              <input type="text" name="username" class="form-control-file mb-2" id="uname" value="{{ results[0]}}" readonly><br>
+              {%endif%}
+              <input type="text" name="otp" class="form-control-file mb-2" id="pass" placeholder="Enter OTP" required="required" ><br>
+              <button class="btn btn-lg btn-success btn-block" type="submit">Reset password</button>
+              <button class="btn btn-lg btn-success btn-block" type="reset">Clear</button>
+
+          </form>
+          <form action="/loginpage" method="POST">
+            <table width="20%"  align="center">
+            <tr>
+            <td><input class="btn  btn-primary" type="submit" value="Login"></td>
+            
+            </tr>
+            
+            </table>
+            </form>
+         
+        </div>
+
+        
+      </div>
+    </article>
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('#inputfile').bind('change', function() {
+          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['jpg','jpeg', 'png']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg/png files are allowed!');
+          }
+      });
+    </script>
+  </body>
+</html>

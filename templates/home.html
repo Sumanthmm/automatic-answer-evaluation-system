@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (min-width: 995px) {
+        #add_border {
+          border-right: 1px solid black;
+        }
+      }
+
+      .jumbotron {
+        margin-bottom: 70px;
+        padding: 15px;
+      }
+      article{
+        padding-top: 77px;
+      }
+      
+
+    </style>
+    <script src="https://kit.fontawesome.com/33b3cdea20.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Exam Paper Evaluation</title>
+  </head>
+  <body>
+    <div class="container">
+      
+      <article>
+        
+        <nav class="navbar  " >
+          <div class="container-fluid">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <form name="home" method="POST">
+                  <input class="btn btn-lg btn-danger ml-2" type="submit" onclick="return check(this.form)" value="Logout" formaction="/logout">
+                </form>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+        
+        <div class="col-lg-6 col-xs-12 text-center mx-auto">
+          <i class="fa fa-send fa-8x mb-1"></i>
+          <form class="form-signin" method="post" action="/answerupload" enctype="multipart/form-data">
+            <p class="h4 mb-2 font-weight-normal">Upload Your Answer Image</p>
+            {% if data %}
+            <input type="text" name="qid" class="form-control-file mb-2" id="pid" value="{{ data[1]}}" readonly><br>
+        
+            Your Question is: {{ data[2] }}
+        
+            {% endif %}
+            <input type="file" name="imf" class="form-control-file mb-2" id="imf" required="required"><br>
+            You can upload only .png image within the size of 1MB
+            <button class="btn btn-lg btn-success btn-block" type="submit">Upload</button><br>
+            <button class="btn btn-lg btn-success btn-block" type="reset">Clear</button><br>
+          </form>
+          <form name="home" method="POST">
+            <input class="btn btn-lg btn-primary mr-2" type="submit" onclick="return check(this.form)" value="View Result" formaction="/viewmark">
+          </form>
+        </div>
+        
+        <div class="col-lg-6 col-xs-12 text-right" style="margin-top: 200px;">
+          <!-- Contents moved to the navigation bar -->
+        </div>
+        
+          
+        
+        
+        
+        
+    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('#inputfile').bind('change', function() {
+          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['jpg','jpeg', 'png']) == -1) {
+            $("#inputfile").val(null);
+            alert('only jpeg/jpg/png files are allowed!');
+          }
+      });
+    </script>
+  </body>
+</html>
